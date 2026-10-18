@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Parabéns, Ana!</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#FFF6EC;--ink:#2B1A3F;--pink:#F2547D;--sun:#FFC83D;--teal:#1FA89A;--card:#FFFFFF;--muted:#6B5A7C;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1D1230;--ink:#FFF1E4;--pink:#FF7A9C;--sun:#FFCF55;--teal:#44D1C2;--card:#2B1A3F;--muted:#C9B8DB}}
+:root[data-theme="dark"]{--bg:#1D1230;--ink:#FFF1E4;--pink:#FF7A9C;--sun:#FFCF55;--teal:#44D1C2;--card:#2B1A3F;--muted:#C9B8DB}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 21px/1.6 'DM Sans',system-ui,sans-serif;overflow-x:hidden}
+h1,h2{font-family:'Fraunces',Georgia,serif;margin:0;line-height:1.02}
+section{max-width:760px;margin:0 auto;padding:72px 24px;position:relative;z-index:1}
+#hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.h{position:absolute;top:-60px;opacity:0;animation:fall linear forwards;will-change:transform}
+@keyframes fall{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.85}90%{opacity:.85}100%{transform:translate(var(--dx),calc(100vh + 80px)) rotate(var(--rot));opacity:0}}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-top:40px}
+.hero small{font-size:1.4rem;color:var(--muted)}
+h1{font-size:clamp(3.4rem,17vw,8.5rem);font-weight:800;letter-spacing:-.03em;color:var(--pink)}
+h1 span{display:block;font-size:.38em;font-style:italic;font-weight:500;color:var(--ink);letter-spacing:0}
+.cake{margin:28px 0 8px;width:min(300px,80vw);cursor:pointer}
+.flame{transform-origin:50% 100%;animation:fl .5s ease-in-out infinite alternate;transition:opacity .35s,transform .35s}
+.flame.off{opacity:0;transform:scale(.2)}
+@keyframes fl{to{transform:scale(1.12,.92) rotate(3deg)}}
+.hint{font-weight:500;color:var(--muted);min-height:1.6em}
+.btn{font:700 1.2rem 'DM Sans',sans-serif;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:14px 28px;cursor:pointer;margin-top:12px}
+.btn:focus-visible,.cake:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+h2{font-size:clamp(2rem,7vw,3.2rem);margin-bottom:24px}
+.letter{background:var(--card);border-radius:28px;padding:40px 32px;box-shadow:0 20px 50px -25px rgba(43,26,63,.45)}
+.letter p{font-family:'Fraunces',Georgia,serif;font-size:1.55rem;line-height:1.7;margin:0 0 1em;max-width:60ch}
+.sign{color:var(--pink);font-style:italic}
+.reasons{display:grid;gap:16px}
+.r{padding:24px 26px;border-radius:22px;background:var(--card);border-left:8px solid var(--c)}
+.r:nth-child(1){--c:var(--pink)}.r:nth-child(2){--c:var(--sun)}.r:nth-child(3){--c:var(--teal)}
+.r strong{font-family:'Fraunces',serif;font-size:1.7rem;display:block}
+.r span{color:var(--muted)}
+.wish{text-align:center}
+.wish p{font-family:'Fraunces',serif;font-size:1.8rem;margin:0 auto 8px;max-width:30ch}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:5}
+.vales{display:grid;gap:16px}
+.c{text-align:center}
+#glow{position:fixed;left:0;top:0;width:360px;height:360px;margin:-180px 0 0 -180px;border-radius:50%;pointer-events:none;z-index:3;background:radial-gradient(circle,rgba(58,123,255,.28),rgba(58,123,255,0) 65%);opacity:0;transition:opacity .4s;will-change:transform}
+#glow.on{opacity:1}
+.abra{display:grid;gap:14px}
+details.ab{background:var(--card);border-radius:22px;border-left:8px solid #3A7BFF}
+details.ab summary{list-style:none;cursor:pointer;padding:22px 26px;font-family:'Fraunces',serif;font-size:1.4rem;line-height:1.25;display:flex;gap:12px;align-items:center}
+details.ab summary::-webkit-details-marker{display:none}
+details.ab summary::after{content:"+";margin-left:auto;color:#3A7BFF;font-size:1.6rem}
+details.ab[open] summary::after{content:"–"}
+details.ab summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:22px}
+details.ab p{margin:0;padding:0 26px 26px;line-height:1.7}
+.box{background:var(--card);border-radius:28px;padding:36px 28px;font-family:'Fraunces',Georgia,serif;font-size:1.6rem;line-height:1.35;min-height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;box-shadow:0 20px 50px -25px rgba(43,26,63,.45);margin-bottom:14px}
+.opt{font:700 1.05rem 'DM Sans',sans-serif;background:var(--bg);color:var(--ink);border:2px solid #3A7BFF;border-radius:16px;padding:12px 18px;cursor:pointer;width:100%}
+.opt:hover{background:#3A7BFF;color:#fff}
+.opt:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.v{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:4px;padding:24px 26px;border-radius:22px;background:var(--card);border:3px dashed #3A7BFF;transition:transform .2s,background .3s}
+.v:hover{transform:rotate(-.6deg) scale(1.01)}
+.v:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.v i{font-style:normal;font-size:2rem}
+.v b{font-family:'Fraunces',serif;font-size:1.5rem;line-height:1.2}
+.v span{color:#3A7BFF;font-weight:700}
+.v em{display:none;font-style:normal}
+.v.on{background:#3A7BFF;border-style:solid;color:#fff}
+.v.on span,.v.on em{color:#fff}
+.v.on em{display:block}
+.cur::after{content:"";display:inline-block;width:2px;height:1em;background:var(--pink);margin-left:2px;vertical-align:-.12em;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+body:not(.open) section:not(.hero){display:none}
+@media (prefers-reduced-motion:reduce){.flame{animation:none}html{scroll-behavior:auto}#hearts{display:none}}
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+<div id="glow" aria-hidden="true"></div>
+<canvas id="fx"></canvas>
+
+<section class="hero">
+  <small>hoje o dia é todo seu</small>
+  <h1><span>Parabéns,</span>Ana!</h1>
+
+  <svg class="cake" id="cake" viewBox="0 0 300 260" role="button" tabindex="0" aria-label="Bolo com velas. Toque para apagar as velas">
+    <ellipse cx="150" cy="244" rx="130" ry="10" fill="#2B1A3F" opacity=".15"/>
+    <rect x="30" y="150" width="240" height="90" rx="18" fill="#F2547D"/>
+    <rect x="55" y="100" width="190" height="60" rx="16" fill="#FFC83D"/>
+    <path d="M30 168c20 14 30-6 50 4s30-8 50 2 30-8 50 2 30-8 50 2 20-4 40-6" fill="none" stroke="#FFF6EC" stroke-width="9" stroke-linecap="round"/>
+    <path d="M55 118c16 12 26-4 42 4s26-6 42 2 26-6 42 2 18-4 22-4" fill="none" stroke="#FFF6EC" stroke-width="7" stroke-linecap="round"/>
+    <g id="candles">
+      <g><rect x="94" y="62" width="10" height="42" rx="3" fill="#1FA89A"/><path class="flame" d="M99 56c-9-9-3-20 0-26 3 6 9 17 0 26z" fill="#FFB020"/></g>
+      <g><rect x="145" y="52" width="10" height="52" rx="3" fill="#2B1A3F"/><path class="flame" d="M150 46c-9-9-3-20 0-26 3 6 9 17 0 26z" fill="#FFB020"/></g>
+      <g><rect x="196" y="62" width="10" height="42" rx="3" fill="#1FA89A"/><path class="flame" d="M201 56c-9-9-3-20 0-26 3 6 9 17 0 26z" fill="#FFB020"/></g>
+    </g>
+  </svg>
+  <div class="hint" id="hint">Toque no bolo pra abrir seu presente 💙</div>
+</section>
+
+<section id="carta">
+  <h2>Uma carta pra você</h2>
+  <p id="skipHint" style="margin:-12px 0 20px;color:var(--muted);font-size:.9rem;display:none">toque na carta para ler tudo de uma vez</p>
+  <div class="letter">
+    <p>Ana, amor, hoje é o seu dia e eu não queria te mandar só um “parabéns” rápido, desses que a gente copia e cola. Você merece mais do que isso. Então senta aí, pega um café, um chá, um pedaço de bolo, o que você quiser, e lê com calma, porque essa carta é longa de propósito. 💙</p>
+    <p>Eu fico pensando em como a vida é engraçada. A gente nunca se viu pessoalmente, nunca tomou um café junto, nunca deu um abraço, e mesmo assim você virou uma das pessoas mais importantes do meu dia. Quando alguém me pergunta como a gente se conhece e eu tento explicar, sempre sinto que as palavras ficam pequenas perto do que você realmente é pra mim.</p>
+    <p>Muita gente acha que amizade precisa de proximidade, de mesa de bar, de foto junto, de “passa lá em casa”. E eu entendo, é bonito mesmo. Mas você me mostrou que o que faz uma amizade existir é outra coisa: é atenção, é cuidado, é lembrar do que o outro falou, é perguntar “e aí, como você tá de verdade?” e querer ouvir a resposta inteira. Você faz isso melhor do que quase todo mundo que eu conheço.</p>
+    <p>Vida, eu queria que você soubesse que existem dias em que uma mensagem sua muda o rumo das minhas horas. Um dia pesado, uma cabeça cheia, um desânimo sem motivo, e aí você aparece, com uma risada, com uma palavra, com um jeito seu de deixar tudo mais leve. Você talvez nem perceba o tamanho disso, mas eu percebo. E agradeço. Sempre.</p>
+    <p>Também quero te agradecer por ser você. Por não precisar fingir pra mim, e por me deixar não fingir pra você. Por aceitar meus dias ruins, meus silêncios, meus áudios longos demais, minhas piadas sem graça e minhas mudanças de humor. Poucas pessoas deixam a gente ser inteiro, e você deixa. Isso é um presente enorme. 💙</p>
+    <p>Eu admiro tanta coisa em você, Ana. Admiro a sua força, mesmo nos momentos em que você diz que não tem nenhuma. Admiro o jeito como você se importa com as pessoas, como você se preocupa, como você torce pelos outros de verdade. Admiro a sua sinceridade, que nunca machuca, mas também nunca deixa a gente se enganar. E admiro a sua capacidade de recomeçar, de levantar, de seguir em frente mesmo quando seria bem mais fácil parar.</p>
+    <p>Se eu pudesse escolher um presente, amor, seria te dar um espelho que mostrasse como as outras pessoas te veem. Porque eu sei que, às vezes, você é dura demais consigo mesma. Você olha pros seus erros com uma lupa e pras suas conquistas com um olhar distraído. Mas se você pudesse ver o que eu vejo, ia entender por que tanta gente gosta de você, por que sua companhia faz tão bem, e por que o mundo fica um pouco melhor com você nele.</p>
+    <p>Quero que você saiba que você não precisa ser perfeita pra ser amada. Você já é amada do jeitinho que é: com os dias de energia total e os dias de só querer ficar quietinha, com as ideias mirabolantes e com as dúvidas, com os sonhos grandes e com os medos que vêm junto. Tudo isso é você, e tudo isso é lindo. 💙</p>
+    <p>Sobre esse novo ano da sua vida, eu desejo coisas simples e enormes ao mesmo tempo. Desejo saúde, porque sem ela nada tem graça. Desejo paz, daquelas que a gente sente no peito quando a cabeça finalmente descansa. Desejo que os seus planos saiam do papel, os pequenos e os gigantes, e que você tenha coragem pra começar mesmo antes de se sentir pronta, porque ninguém nunca se sente.</p>
+    <p>Desejo que você tenha dias leves, manhãs tranquilas, noites boas de sono, músicas que te façam dançar na cozinha e comidas que te façam fechar os olhos de tão boas. Desejo que você receba, de volta, todo o carinho que você distribui sem pensar. Que as pessoas certas fiquem e que as pessoas erradas passem rápido. Que o seu coração esteja sempre em casa, onde quer que você esteja.</p>
+    <p>E desejo, de coração, que a gente ainda se encontre. Que um dia eu possa chegar, te olhar de frente e dizer: “nossa, é você mesmo!”. Que a gente ria do nervosismo, que a gente tire mil fotos ruins, que a gente passe horas conversando como se o tempo não existisse. Eu já imagino esse abraço, vida. Vai ser demorado, desses que apertam de verdade. 💙</p>
+    <p>Até lá, quero continuar aqui. Nas mensagens do dia a dia, nos desabafos, nas risadas bobas, nas conversas aleatórias que de aleatórias não têm nada. Quero ser o amigo que você pode chamar a qualquer hora, pra rir, pra chorar ou pra não falar nada, só pra saber que alguém está por perto. Pode contar comigo, sempre.</p>
+    <p>Hoje o dia é seu, então aproveita. Come bolo, ouve sua música favorita, recebe os parabéns, deixa alguém te mimar um pouquinho. Você merece ser celebrada hoje e em todos os outros dias do ano. Se algum momento hoje bater aquela saudade ou aquela vontade de ser lembrada, volta aqui e lê de novo, que eu escrevi pensando em você em cada linha.</p>
+    <p>Parabéns, Ana. Pelo seu dia, pela sua vida, pela pessoa maravilhosa que você é. Obrigado por existir, por ser minha amiga e por tornar o mundo mais bonito. Te desejo o melhor que a vida tem. Você merece tudo isso e muito mais. 💙</p>
+    <p class="sign">Com todo carinho, Vitor. 💙</p>
+  </div>
+</section>
+
+<section>
+  <h2>Por que você é especial</h2>
+  <div class="reasons">
+    <div class="r"><strong>Você escuta de verdade</strong><span>Dá pra falar de tudo com você, sem medo.</span></div>
+    <div class="r"><strong>Sua risada é contagiante</strong><span>Qualquer dia ruim fica melhor com você por perto.</span></div>
+    <div class="r"><strong>Você está sempre presente</strong><span>Mesmo à distância, nos momentos difíceis e nos de festa.</span></div>
+  </div>
+</section>
+
+<section class="c">
+  <h2>O que eu penso de você</h2>
+  <div class="box" id="elogio" aria-live="polite">Toque no botão aqui embaixo 💙</div>
+  <button class="btn" id="elogioBtn">Ver um elogio 💙</button>
+</section>
+
+<section>
+  <h2>Abra quando… 💌</h2>
+  <p style="color:var(--muted);margin:0 0 24px">Uma cartinha pra cada momento. Toque na que combinar com o seu agora.</p>
+  <div class="abra">
+    <details class="ab"><summary>💙 Abra quando estiver triste</summary><p>Ana, se você está lendo isso, é porque hoje não está sendo um dia fácil, e eu sinto muito. Quero que você saiba que não precisa estar bem o tempo todo. Chorar, parar e descansar também fazem parte. Respira fundo, bebe uma água, abraça um travesseiro e coloca uma música de que você gosta. Esse dia vai passar, como todos os outros passaram. E enquanto ele não passa, eu estou aqui. É só me chamar, nem que seja pra dizer “oi”. Você não está sozinha. 💙</p></details>
+    <details class="ab"><summary>🌙 Abra quando sentir saudade</summary><p>Saudade de quem a gente nunca abraçou é uma saudade esquisita, né? Eu sinto também. Mas pensa comigo: se a gente sente saudade, é porque o que a gente tem é real. E tudo o que é real, um dia se encontra. Até lá, me manda uma mensagem, um áudio, uma figurinha, o que for. Eu respondo, prometo. 💙</p></details>
+    <details class="ab"><summary>💪 Abra quando duvidar de si mesma</summary><p>Ana, para um minutinho. Lembra de tudo o que você já superou? Cada dia difícil que você atravessou até chegar aqui? Você é mais capaz do que acha, mais bonita por dentro do que imagina e mais importante pra mim do que consegue enxergar agora. A dúvida faz parte, mas ela não manda em você. Respira, levanta a cabeça e segue. Eu acredito em você, de olhos fechados. 💙</p></details>
+    <details class="ab"><summary>😄 Abra quando precisar rir</summary><p>Leia com voz de narrador de documentário: “A Ana, uma espécie rara e fascinante, abriu uma cartinha em busca de risada. Encontrou o Vitor, uma criatura que tenta ser engraçada há anos, com resultados duvidosos, mas muito esforço.” Se você não riu, pelo menos sorriu por dentro, eu sei. 😄💙</p></details>
+    <details class="ab"><summary>🎉 Abra quando estiver feliz</summary><p>Que bom! Eu queria estar aí pra comemorar com você. Aproveita cada pedacinho dessa alegria, porque você merece. Depois me conta o que aconteceu, quero saber de tudo, e eu comemoro junto, mesmo de longe. 💙</p></details>
+    <details class="ab"><summary>😴 Abra quando não conseguir dormir</summary><p>Já é tarde e a cabeça não desliga, né? Fecha os olhos, respira devagar, solta os ombros. Tudo o que está te preocupando vai estar no mesmo lugar amanhã, só que você vai estar mais descansada pra resolver. Boa noite, Ana. Dorme bem e sonha com coisa boa. 💙</p></details>
+  </div>
+</section>
+
+<section>
+  <h2>Seus vales 🎟️</h2>
+  <p style="color:var(--muted);margin:0 0 24px">Toque pra resgatar. Valem pra sempre. 💙</p>
+  <div class="vales">
+    <button class="v"><i>📞</i><b>Chamada à sua escolha</b><span>Toque para resgatar</span><em>De voz ou de vídeo, você decide. Sem pressa e sem hora pra acabar. É só me chamar. 💙</em></button>
+    <button class="v"><i>🎬</i><b>Filme ou série juntos, online</b><span>Toque para resgatar</span><em>Você escolhe o que assistir, eu levo a pipoca (imaginária). 💙</em></button>
+    <button class="v"><i>💬</i><b>Desabafo sem limite</b><span>Toque para resgatar</span><em>Quando precisar, eu escuto de verdade e sem julgar. 💙</em></button>
+    <button class="v"><i>🎁</i><b>Uma surpresa</b><span>Toque para resgatar</span><em>Não vou contar o que é. Mas vai ser feita com amor. 💙</em></button>
+  </div>
+</section>
+
+<section class="wish">
+  <h2>Faça um pedido</h2>
+  <p>Feche os olhos, pense em algo que você quer muito e clique.</p>
+  <button class="btn" id="wishBtn">Pedir meu desejo ✨</button>
+  <div class="hint" id="wishMsg" style="margin-top:16px"></div>
+</section>
+
+<script>
+const cv=document.getElementById('fx'),cx=cv.getContext('2d');let parts=[],run=false;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+function confetti(n){const cols=['#F2547D','#FFC83D','#1FA89A','#FF7A9C','#7B5CFF'];
+ for(let i=0;i<n;i++)parts.push({x:innerWidth/2+(Math.random()-.5)*120,y:innerHeight*.45,vx:(Math.random()-.5)*12,vy:-Math.random()*13-3,s:Math.random()*8+5,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[i%5]});
+ if(!run){run=true;loop()}}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);
+ parts.forEach(p=>{p.vy+=.28;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);cx.restore()});
+ parts=parts.filter(p=>p.y<innerHeight+30);
+ if(parts.length)requestAnimationFrame(loop);else{run=false;cx.clearRect(0,0,cv.width,cv.height)}}
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(!reduce){const box=document.getElementById('hearts'),em=['💙'];
+ function drop(){if(document.hidden||box.children.length>22)return;const h=document.createElement('span');h.className='h';h.textContent=em[Math.floor(Math.random()*em.length)];
+  h.style.left=Math.random()*100+'%';h.style.fontSize=(14+Math.random()*22)+'px';h.style.animationDuration=(8+Math.random()*8)+'s';
+  h.style.setProperty('--dx',((Math.random()-.5)*160)+'px');h.style.setProperty('--rot',((Math.random()-.5)*90)+'deg');
+  h.addEventListener('animationend',()=>h.remove());box.appendChild(h)}
+ for(let i=0;i<8;i++)setTimeout(drop,i*350);setInterval(drop,650)}
+const flames=[...document.querySelectorAll('.flame')],hint=document.getElementById('hint'),cake=document.getElementById('cake');
+let blown=false;
+function blow(){
+ if(blown){flames.forEach(f=>f.classList.remove('off'));blown=false;hint.textContent='Toque no bolo pra abrir seu presente 💙';return}
+ flames.forEach((f,i)=>setTimeout(()=>f.classList.add('off'),i*180));
+ setTimeout(()=>{blown=true;hint.textContent='Parabéns, Ana! 🎉💙 (toque de novo para acender)';if(!reduce)confetti(160);
+  if(!document.body.classList.contains('open')){document.body.classList.add('open');prepType();setTimeout(startType,1100);setTimeout(()=>document.getElementById('carta').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}),250)}},600);
+}
+cake.addEventListener('click',blow);
+cake.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();blow()}});
+if(!reduce){const g=document.getElementById('glow');let ft;
+ const mv=(x,y)=>{g.style.transform='translate3d('+x+'px,'+y+'px,0)';g.classList.add('on');clearTimeout(ft);ft=setTimeout(()=>g.classList.remove('on'),1800)};
+ addEventListener('pointermove',e=>mv(e.clientX,e.clientY));
+ addEventListener('touchstart',e=>{const t=e.touches[0];mv(t.clientX,t.clientY)},{passive:true});
+ addEventListener('touchmove',e=>{const t=e.touches[0];mv(t.clientX,t.clientY)},{passive:true});
+ document.addEventListener('mouseleave',()=>g.classList.remove('on'))}
+const LP=[...document.querySelectorAll('#carta .letter p')];let typed=false,tk=null;
+function prepType(){if(reduce||typed)return;LP.forEach(p=>{const t=p.textContent;p.dataset.full=t;p._c=Array.from(t);p.innerHTML='';const a=document.createElement('span'),b=document.createElement('span');b.style.visibility='hidden';b.textContent=t;p.append(a,b)})}
+function finishType(){if(typed)return;clearInterval(tk);LP.forEach(p=>{if(p.dataset.full){p.textContent=p.dataset.full;delete p.dataset.full}});typed=true;document.getElementById('skipHint').style.display='none'}
+function startType(){if(reduce||typed)return;document.getElementById('skipHint').style.display='block';let pi=0,ci=0;
+ tk=setInterval(()=>{const p=LP[pi];if(!p){finishType();return}const c=p._c;ci=Math.min(ci+2,c.length);p.children[0].textContent=c.slice(0,ci).join('');p.children[1].textContent=c.slice(ci).join('');p.children[0].className='cur';
+  if(ci>=c.length){p.children[0].className='';pi++;ci=0}},16)}
+document.querySelector('#carta .letter').addEventListener('click',finishType);
+const EL=['Você faz qualquer dia ficar mais leve. 💙','Sua risada é uma das coisas mais bonitas que existem. 💙','Você é forte, mesmo quando acha que não é. 💙','Quem tem você por perto tem muita sorte. 💙','Você escuta com o coração. 💙','O seu jeito de se importar com os outros é raro. 💙','Você merece todas as coisas boas que estão chegando. 💙','Você é inteligente, sensível e incrível. 💙','Conversar com você é um dos melhores momentos do meu dia. 💙','Você é muito mais amada do que imagina. 💙','Você me inspira a ser uma pessoa melhor. 💙','Do jeitinho que você é, já é perfeita pra mim. 💙'];
+let ei=-1;
+document.getElementById('elogioBtn').addEventListener('click',()=>{let n;do{n=Math.floor(Math.random()*EL.length)}while(n===ei);ei=n;document.getElementById('elogio').textContent=EL[n]});
+const QZ=[
+{q:'O que o Vitor mais faz quando você manda mensagem?',o:[['Responde na hora','Sempre! Ou quase sempre. 😅'],['Sorri olhando pro celular','Culpado. 💙'],['Fica esperando você terminar de digitar','Ansioso demais, eu sei. 😂']]},
+{q:'Qual a maior prova de que ele gosta de você?',o:[['Fez este site inteirinho','Deu trabalho, mas foi com muito carinho. 💙'],['Aguenta as suas piadas','E ainda ri de todas! 😄'],['Pensa em você sem motivo nenhum','Confesso que sim. 💙']]},
+{q:'Se ele pudesse te dar um presente agora, qual seria?',o:[['Um abraço de verdade','Esse é o plano pro futuro. 💙'],['Uma viagem pra gente se conhecer','Um dia, quem sabe! ✈️'],['Um bolo gigante','Você merece, mas ia chegar derretido. 😂']]},
+{q:'Quem tem a melhor amizade do mundo?',o:[['O Vitor','Verdade, ele tem muita sorte! 💙'],['A Ana','Ela merece cada pedacinho! 💙'],['Os dois, claro','Resposta mais que certa! 🏆']]}
+];
+let qi=0;const qb=document.getElementById('quiz');
+function showQ(){qb.innerHTML='';
+ if(qi>=QZ.length){const t=document.createElement('div');t.textContent='Você acertou tudo! 🏆 Nota 10, Ana. (Era impossível errar 😄) 💙';qb.appendChild(t);
+  const r=document.createElement('button');r.className='btn';r.textContent='Jogar de novo';r.onclick=()=>{qi=0;showQ()};qb.appendChild(r);if(!reduce)confetti(120);return}
+ const d=QZ[qi],t=document.createElement('div');t.textContent=(qi+1)+'/'+QZ.length+' · '+d.q;qb.appendChild(t);
+ d.o.forEach(([txt,rx])=>{const b=document.createElement('button');b.className='opt';b.textContent=txt;
+  b.onclick=()=>{qb.innerHTML='';const m=document.createElement('div');m.textContent=rx;qb.appendChild(m);
+   const n=document.createElement('button');n.className='btn';n.textContent=qi<QZ.length-1?'Próxima':'Ver resultado';n.onclick=()=>{qi++;showQ()};qb.appendChild(n)};
+  qb.appendChild(b)})}
+document.querySelectorAll('.v').forEach(v=>v.addEventListener('click',()=>{const on=v.classList.toggle('on');v.querySelector('span').textContent=on?'✓ Resgatado':'Toque para resgatar';if(on&&!reduce)confetti(50)}));
+document.getElementById('wishBtn').addEventListener('click',()=>{
+ document.getElementById('wishMsg').textContent='Desejo feito. Que se realize em dobro, amor! 💙';
+ if(!reduce)confetti(120);
+});
+</script>
+</body>
+</html>
